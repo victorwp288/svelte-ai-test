@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import {useChat} from "ai/svelte";
+
+	const {messages, handleSubmit, input} = useChat({
+		api: "/chat",
+	});
+</script>
+
+<ul>
+	{#each $messages as message}
+		<li>{message.role} says... {message.content}</li>
+	{/each}
+</ul>
+
+<form on:submit|preventDefault={handleSubmit}>
+	<input bind:value={$input} />
+	<button>Send</button>
+</form>
