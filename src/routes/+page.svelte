@@ -6,6 +6,8 @@
 	});
 </script>
 
+
+<h1>Ask our ai below</h1>
 <ul>
 	{#each $messages as message}
 		<li>{message.role} says... {message.content}</li>
